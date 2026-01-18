@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Student List View -->
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">student.list</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="display_name"/>
+                <field name="age"/>
+                <field name="grade"/>
+                <field name="classroom_id"/>
+                <field name="status"/>
+                <field name="passing_date"/>
+                <field name="drop_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Student Form View -->
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="last_name"/>
+                        <field name="display_name" readonly="1"/>
+                        <field name="dob"/>
+                        <field name="age" readonly="1"/>
+                        <field name="grade"/>
+                        <field name="classroom_id"/>
+                        <field name="subject_ids"/>
+                    </group>
+                    <group>
+                        <field name="status" widget="statusbar" statusbar_visible="new,admitted,passed,dropped"/>
+                        <field name="passing_date" readonly="1"/>
+                        <field name="drop_date" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_student" name="Students" parent="menu_school_root" sequence="20" action="action_student"/>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Root Menu -->
+    <menuitem
+        id="menu_school_root"
+        name="School Management"
+        sequence="10"/>
+
+    <!-- Student Menu -->
+    <menuitem
+        id="menu_student"
+        name="Students"
+        parent="menu_school_root"
+        action="action_student"
+        sequence="20"/>
+
+    <!-- Teacher Menu -->
+    <menuitem
+        id="menu_teacher"
+        name="Teachers"
+        parent="menu_school_root"
+        action="action_teacher"
+        sequence="30"/>
+
+    <!-- Classroom Menu -->
+    <menuitem
+        id="menu_classroom"
+        name="Classrooms"
+        parent="menu_school_root"
+        action="action_classroom"
+        sequence="40"/>
+
+    <!-- Subject Menu -->
+    <menuitem
+        id="menu_subject"
+        name="Subjects"
+        parent="menu_school_root"
+        action="action_subject"
+        sequence="50"/>
+
+</odoo>

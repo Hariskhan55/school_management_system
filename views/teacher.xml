@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- List view -->
     <record id="view_teacher_tree" model="ir.ui.view">
         <field name="name">teacher.list</field>
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="subject"/>
-                <field name="experience"/>
             </list>
         </field>
     </record>
 
-    <!-- Form view -->
     <record id="view_teacher_form" model="ir.ui.view">
         <field name="name">teacher.form</field>
         <field name="model">school.teacher</field>
@@ -22,21 +18,17 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="subject"/>
-                        <field name="experience"/>
+                        <field name="subject_ids"/>
+                        <field name="classroom_ids"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Action -->
     <record id="action_teacher" model="ir.actions.act_window">
         <field name="name">Teachers</field>
         <field name="res_model">school.teacher</field>
         <field name="view_mode">list,form</field>
     </record>
-
-    <!-- Menu -->
-    <menuitem id="menu_teacher" name="Teachers" parent="menu_school_root" action="action_teacher"/>
 </odoo>
