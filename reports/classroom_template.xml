@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_classroom_pdf">
+        <!-- Use standard external layout -->
+        <t t-call="web.external_layout">
+
+            <!-- Main content MUST be inside <main> -->
+            <main class="page">
+                <h2 style="text-align:center; color:#1a73e8; margin-bottom:20px;">
+                    Classroom Report
+                </h2>
+
+                <!-- Loop through classrooms -->
+                <t t-foreach="docs" t-as="o">
+                    <table style="width:100%; border-collapse: collapse; margin-bottom:20px;">
+                        <tr>
+                            <td style="font-weight:bold;">Class Name:</td>
+                            <td t-esc="o.name"/>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Section:</td>
+                            <td t-esc="o.section"/>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Class Teacher:</td>
+                            <td>
+                                <t t-if="o.teacher_id">
+                                    <t t-esc="o.teacher_id.name"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h3 style="color:#1a73e8; margin-bottom:10px;">Students List</h3>
+
+                    <table style="width:100%; border:1px solid #ccc; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color:#f5f7fa;">
+                                <th style="border:1px solid #ccc; padding:5px;">#</th>
+                                <th style="border:1px solid #ccc; padding:5px;">Name</th>
+                                <th style="border:1px solid #ccc; padding:5px;">Age</th>
+                                <th style="border:1px solid #ccc; padding:5px;">Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="o.student_ids" t-as="s">
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:5px;"><t t-esc="i"/><t t-set="i" t-value="i + 1"/></td>
+                                    <td style="border:1px solid #ccc; padding:5px;" t-esc="s.display_name"/>
+                                    <td style="border:1px solid #ccc; padding:5px;" t-esc="s.age"/>
+                                    <td style="border:1px solid #ccc; padding:5px;" t-esc="s.grade"/>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <div style="page-break-after: always;"></div>
+                </t>
+            </main>
+
+        </t>
+    </template>
+</odoo>

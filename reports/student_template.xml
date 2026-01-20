@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="report_student_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+
+                        <h2 style="text-align:center;">Student Report</h2>
+
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Name</strong></td>
+                                <td><t t-esc="o.display_name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Age</strong></td>
+                                <td><t t-esc="o.age"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grade</strong></td>
+                                <td><t t-esc="o.grade"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Classroom</strong></td>
+                                <td><t t-esc="o.classroom_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Status</strong></td>
+                                <td><t t-esc="o.status"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Parent Contact</strong></td>
+                                <td><t t-esc="o.parent_contact"/></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </t>
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

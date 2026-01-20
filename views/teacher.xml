@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_teacher_tree" model="ir.ui.view">
-        <field name="name">teacher.list</field>
+
+    <!-- TEACHER LIST VIEW -->
+    <record id="view_teacher_list" model="ir.ui.view">
+        <field name="name">school.teacher.list</field>
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="salary"/>
             </list>
         </field>
     </record>
 
+    <!-- TEACHER FORM VIEW -->
     <record id="view_teacher_form" model="ir.ui.view">
-        <field name="name">teacher.form</field>
+        <field name="name">school.teacher.form</field>
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Teacher">
+
+          <header>
+    <button name="%(school_management_system.action_teacher_pdf)d"
+            string="Print PDF"
+            type="action"
+            class="btn-primary"/>
+</header>
+
+
+
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="subject_ids"/>
-                        <field name="classroom_ids"/>
+                        <group string="Basic Information">
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+
+                        <group string="Professional Details">
+                            <field name="subject_ids" widget="many2many_tags"/>
+                            <field name="salary"/>
+                            <field name="currency_id"/>
+                        </group>
                     </group>
                 </sheet>
+
             </form>
         </field>
     </record>
 
+    <!-- TEACHER ACTION -->
     <record id="action_teacher" model="ir.actions.act_window">
         <field name="name">Teachers</field>
         <field name="res_model">school.teacher</field>
         <field name="view_mode">list,form</field>
     </record>
+
 </odoo>

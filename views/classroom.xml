@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Tree view for classrooms -->
-    <record id="view_classroom_tree" model="ir.ui.view">
-        <field name="name">classroom.list</field>
+
+    <!-- LIST VIEW -->
+    <record id="view_classroom_list" model="ir.ui.view">
+        <field name="name">school.classroom.list</field>
         <field name="model">school.classroom</field>
         <field name="arch" type="xml">
             <list>
@@ -13,12 +14,21 @@
         </field>
     </record>
 
-    <!-- Form view for classrooms -->
+    <!-- FORM VIEW -->
     <record id="view_classroom_form" model="ir.ui.view">
-        <field name="name">classroom.form</field>
+        <field name="name">school.classroom.form</field>
         <field name="model">school.classroom</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Classroom">
+
+                <!-- HEADER BUTTON -->
+                <header>
+                    <button name="%(school_management_system.action_classroom_pdf)d"
+                            string="Print PDF"
+                            type="action"
+                            class="btn-primary"/>
+                </header>
+
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -28,7 +38,6 @@
 
                     <notebook>
                         <page string="Students">
-                            <!-- One2many field for students -->
                             <field name="student_ids">
                                 <list>
                                     <field name="display_name"/>
@@ -43,7 +52,7 @@
         </field>
     </record>
 
-    <!-- Classroom action -->
+    <!-- ACTION -->
     <record id="action_classroom" model="ir.actions.act_window">
         <field name="name">Classrooms</field>
         <field name="res_model">school.classroom</field>

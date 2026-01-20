@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Teacher PDF Report Action -->
+    <record id="action_teacher_pdf" model="ir.actions.report">
+        <field name="name">Teacher Report</field>
+        <field name="model">school.teacher</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_management_system.report_teacher_pdf</field>
+        <field name="report_file">school_management_system.report_teacher_pdf</field>
+        <field name="print_report_name">'Teacher - %s' % (object.name)</field>
+    </record>
+
+</odoo>

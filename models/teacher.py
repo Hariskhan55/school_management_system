@@ -1,9 +1,15 @@
 from odoo import models, fields
 
 class Teacher(models.Model):
-    _name = 'school.teacher'
-    _description = 'Teacher'
+    _name = "school.teacher"
+    _description = "Teacher"
 
-    name = fields.Char(string="Teacher Name", required=True)
+    name = fields.Char(string="Name", required=True)
+    phone = fields.Char(string="Phone")
+    email = fields.Char(string="Email")
     subject_ids = fields.Many2many('school.subject', string="Subjects")
-    classroom_ids = fields.One2many('school.classroom', 'teacher_id', string="Classrooms")
+    salary = fields.Monetary(string="Salary")
+    currency_id = fields.Many2one(
+        'res.currency',
+        default=lambda self: self.env.company.currency_id
+    )

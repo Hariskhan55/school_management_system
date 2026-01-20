@@ -9,6 +9,7 @@ class Student(models.Model):
     # BASIC INFO
     name = fields.Char(string="First Name", required=True)
     last_name = fields.Char(string="Last Name", required=True)
+    parent_contact = fields.Char(string="Parent Contact")
 
     display_name = fields.Char(
         string="Display Name",
@@ -38,7 +39,7 @@ class Student(models.Model):
         string="Subjects"
     )
 
-    # STATUS MANAGEMENT
+    # STATUS (DROPDOWN)
     status = fields.Selection(
         [
             ('draft', 'Draft'),
@@ -47,37 +48,30 @@ class Student(models.Model):
             ('dropped', 'Dropped'),
         ],
         string="Status",
-        default='draft',
-        tracking=True
+        default='draft'
     )
 
-    passing_date = fields.Date(
-        string="Passing Date",
-        readonly=True
-    )
+    passing_date = fields.Date(string="Passing Date")
+    drop_date = fields.Date(string="Drop Date")
 
-    drop_date = fields.Date(
-        string="Drop Date",
-        readonly=True
-    )
-
-    # FEES (MONETARY FIELD)
+    # FEES (MONETARY)
     currency_id = fields.Many2one(
         'res.currency',
         string='Currency',
-        default=lambda self: self.env.company.currency_id,
-        required=True
+        required=True,
+        default=lambda self: self.env.company.currency_id
     )
 
     tuition_fee = fields.Monetary(
         string="Tuition Fee",
         currency_field='currency_id'
     )
-    # COMPUTED METHODS
+
+    # COMPUTES
     @api.depends('name', 'last_name')
     def _compute_display_name(self):
         for rec in self:
-            rec.display_name = f"{rec.name} {rec.last_name}" if rec.name and rec.last_name else rec.name or rec.last_name
+            rec.display_name = f"{rec.name} {rec.last_name}"
 
     @api.depends('dob')
     def _compute_age(self):
@@ -89,3 +83,12 @@ class Student(models.Model):
                 )
             else:
                 rec.age = 0
+
+    # BUTTON ACTIONS
+    def action_confirm_student(self):
+        for rec in self:
+            rec.status = 'active'
+        return True
+
+    def action_cancel_student(self):
+        return {'type': 'ir.actions.act_window_close'}

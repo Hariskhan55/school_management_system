@@ -36,7 +36,7 @@
         id="menu_subject"
         name="Subjects"
         parent="menu_school_root"
-        action="action_subject"
+        action="action_student"
         sequence="50"/>
 
 </odoo>

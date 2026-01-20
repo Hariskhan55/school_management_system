@@ -4,16 +4,27 @@
     'summary': 'Manage students, teachers, classrooms, subjects and fees',
     'category': 'Education',
     'author': 'Your Name',
-    'website': 'https://example.com',
-    'depends': ['base'],
+    'depends': [
+        'base',
+        'account'
+    ], # Monetary fields remain safe
     'data': [
-        'security/ir.model.access.csv',
-        'views/menu.xml',
-        'views/student.xml',
-        'views/teacher.xml',
-        'views/classroom.xml',
-        'views/subject.xml',
-    ],
+    'security/ir.model.access.csv',
+
+        'reports/student_action.xml',
+        'reports/student_template.xml',
+    'views/menu.xml',
+    'views/student.xml',
+    'views/classroom.xml',
+    'views/subject.xml',
+    'reports/teacher_template.xml',
+    'reports/teacher_action.xml',
+
+    'reports/classroom_action.xml',
+    'reports/classroom_template.xml',
+    'views/teacher.xml',
+],
+
     'installable': True,
     'application': True,
 }
