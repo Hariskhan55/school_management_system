@@ -4,36 +4,39 @@
         <!-- Use standard external layout -->
         <t t-call="web.external_layout">
 
-            <!-- Main content MUST be inside <main> -->
-            <main class="page">
-                <h2 style="text-align:center; color:#1a73e8; margin-bottom:20px;">
-                    Classroom Report
-                </h2>
+            <!-- HEADER -->
+            <div style="width:100%; border-bottom:2px solid #1a73e8; padding:10px 0; margin-bottom:15px;">
+                <table style="width:100%; border-collapse: collapse;">
+                    <tr>
+                        <!-- Logo on left -->
+                        <td style="width:20%; text-align:left;">
+                            <img src="your_logo_url_here" style="max-height:60px;"/>
+                        </td>
 
-                <!-- Loop through classrooms -->
-                <t t-foreach="docs" t-as="o">
-                    <table style="width:100%; border-collapse: collapse; margin-bottom:20px;">
-                        <tr>
-                            <td style="font-weight:bold;">Class Name:</td>
-                            <td t-esc="o.name"/>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:bold;">Section:</td>
-                            <td t-esc="o.section"/>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:bold;">Class Teacher:</td>
-                            <td>
-                                <t t-if="o.teacher_id">
-                                    <t t-esc="o.teacher_id.name"/>
+                        <!-- Heading and classroom info in center -->
+                        <td style="width:60%; text-align:center;">
+                            <h2 style="margin:0; color:#1a73e8;">Classroom Report</h2>
+                            <p style="margin:5px 0 0 0; font-size:13px; color:#555;">
+                                <!-- Classroom info -->
+                                <t t-foreach="docs" t-as="o">
+                                    Class: <t t-esc="o.name"/> | Section: <t t-esc="o.section"/><br/>
+                                    <t t-if="o.teacher_id">Class Teacher: <t t-esc="o.teacher_id.name"/></t>
                                 </t>
-                            </td>
-                        </tr>
-                    </table>
+                            </p>
+                        </td>
 
+                        <!-- Empty space on right -->
+                        <td style="width:20%;"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <main class="page">
+                <t t-foreach="docs" t-as="o">
                     <h3 style="color:#1a73e8; margin-bottom:10px;">Students List</h3>
 
-                    <table style="width:100%; border:1px solid #ccc; border-collapse: collapse;">
+                    <table style="width:100%; border:1px solid #ccc; border-collapse: collapse; margin-bottom:20px;">
                         <thead>
                             <tr style="background-color:#f5f7fa;">
                                 <th style="border:1px solid #ccc; padding:5px;">#</th>
@@ -58,6 +61,17 @@
                     <div style="page-break-after: always;"></div>
                 </t>
             </main>
+
+            <!-- FOOTER -->
+            <div style="width:100%; border-top:2px solid #1a73e8; margin-top:15px; padding-top:5px; font-size:10px;">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="text-align:left;">📞 +92-300-1234567</td>
+                        <td style="text-align:center;">📧 info@school.com</td>
+                        <td style="text-align:right;">Page <span class="page"/> / <span class="topage"/></td>
+                    </tr>
+                </table>
+            </div>
 
         </t>
     </template>

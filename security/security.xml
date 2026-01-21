@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Teacher Group -->
+    <record id="group_school_teacher" model="res.groups">
+        <field name="name">Teacher</field>
+    </record>
+
+</odoo>

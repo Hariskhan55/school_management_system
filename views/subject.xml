@@ -1,53 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Student List View -->
-    <record id="view_student_list" model="ir.ui.view">
-        <field name="name">student.list</field>
-        <field name="model">school.student</field>
+    <!-- Subject List View -->
+    <record id="view_subject_list" model="ir.ui.view">
+        <field name="name">school.subject.list</field>
+        <field name="model">school.subject</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="display_name"/>
-                <field name="age"/>
-                <field name="grade"/>
-                <field name="classroom_id"/>
-                <field name="status"/>
-                <field name="passing_date"/>
-                <field name="drop_date"/>
+            <list string="Subjects">
+                <field name="name"/>
+                <field name="teacher_ids"/>
+                <field name="student_ids"/>
             </list>
         </field>
     </record>
 
-    <!-- Student Form View -->
-    <record id="view_student_form" model="ir.ui.view">
-        <field name="name">student.form</field>
-        <field name="model">school.student</field>
+    <!-- Subject Form View -->
+    <record id="view_subject_form" model="ir.ui.view">
+        <field name="name">school.subject.form</field>
+        <field name="model">school.subject</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Subject">
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="last_name"/>
-                        <field name="display_name" readonly="1"/>
-                        <field name="dob"/>
-                        <field name="age" readonly="1"/>
-                        <field name="grade"/>
-                        <field name="classroom_id"/>
-                        <field name="subject_ids"/>
-                    </group>
-                    <group>
-                        <field name="status" widget="statusbar" statusbar_visible="new,admitted,passed,dropped"/>
-                        <field name="passing_date" readonly="1"/>
-                        <field name="drop_date" readonly="1"/>
+                        <field name="teacher_ids" widget="many2many_tags"/>
+                        <field name="student_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Action -->
-    <record id="action_student" model="ir.actions.act_window">
-        <field name="name">Students</field>
-        <field name="res_model">school.student</field>
+    <!-- Action for Subjects -->
+    <record id="action_subject" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">school.subject</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>

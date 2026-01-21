@@ -1,5 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_student,access_student,model_school_student,,1,1,1,1
-access_classroom,access_classroom,model_school_classroom,,1,1,1,1
-access_teacher,access_teacher,model_school_teacher,,1,1,1,1
-access_subject,access_subject,model_school_subject,,1,1,1,1
+
+access_student_admin,Student Admin,model_school_student,base.group_system,1,1,1,1
+access_teacher_admin,Teacher Admin,model_school_teacher,base.group_system,1,1,1,1
+access_classroom_admin,Classroom Admin,model_school_classroom,base.group_system,1,1,1,1
+access_subject_admin,Subject Admin,model_school_subject,base.group_system,1,1,1,1
+
+access_student_teacher,Student Teacher Read,model_school_student,school_management_system.group_school_teacher,1,0,0,0
+access_teacher_teacher,Teacher Read,model_school_teacher,school_management_system.group_school_teacher,1,0,0,0
+access_classroom_teacher,Classroom Teacher Read,model_school_classroom,school_management_system.group_school_teacher,1,0,0,0
+access_subject_teacher,Subject Teacher Read,model_school_subject,school_management_system.group_school_teacher,1,0,0,0

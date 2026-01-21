@@ -1,47 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
     <template id="report_student_pdf">
-        <t t-call="web.html_container">
-            <t t-call="web.external_layout">
+        <t t-call="web.external_layout">
 
+            <!-- HEADER -->
+            <div style="width:100%; border-bottom:2px solid #1a73e8; padding:10px 0; margin-bottom:15px;">
+                <table style="width:100%; border-collapse: collapse;">
+                    <tr>
+                        <!-- Logo -->
+                        <td style="width:20%; text-align:left;">
+                            <img src="your_logo_url_here" style="max-height:60px;"/>
+                        </td>
+                        <!-- Title -->
+                        <td style="width:60%; text-align:center;">
+                            <h2 style="margin:0; color:#1a73e8;">Student Report</h2>
+                        </td>
+                        <td style="width:20%;"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <main class="page">
                 <t t-foreach="docs" t-as="o">
-                    <div class="page">
+                    <table style="width:100%; border:1px solid #ccc; border-collapse: collapse; margin-bottom:20px;">
+                        <tr style="background-color:#f5f7fa;">
+                            <th style="padding:8px; border:1px solid #ccc;">Field</th>
+                            <th style="padding:8px; border:1px solid #ccc;">Value</th>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ccc;">Name</td>
+                            <td style="padding:8px; border:1px solid #ccc;"><t t-esc="o.display_name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ccc;">Age</td>
+                            <td style="padding:8px; border:1px solid #ccc;"><t t-esc="o.age"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ccc;">Grade</td>
+                            <td style="padding:8px; border:1px solid #ccc;"><t t-esc="o.grade"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ccc;">Classroom</td>
+                            <td style="padding:8px; border:1px solid #ccc;"><t t-esc="o.classroom_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ccc;">Status</td>
+                            <td style="padding:8px; border:1px solid #ccc;"><t t-esc="o.status"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ccc;">Parent Contact</td>
+                            <td style="padding:8px; border:1px solid #ccc;"><t t-esc="o.parent_contact"/></td>
+                        </tr>
+                    </table>
 
-                        <h2 style="text-align:center;">Student Report</h2>
-
-                        <table class="table table-sm">
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td><t t-esc="o.display_name"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Age</strong></td>
-                                <td><t t-esc="o.age"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Grade</strong></td>
-                                <td><t t-esc="o.grade"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Classroom</strong></td>
-                                <td><t t-esc="o.classroom_id.name"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Status</strong></td>
-                                <td><t t-esc="o.status"/></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Parent Contact</strong></td>
-                                <td><t t-esc="o.parent_contact"/></td>
-                            </tr>
-                        </table>
-
-                    </div>
+                    <div style="page-break-after: always;"></div>
                 </t>
+            </main>
 
-            </t>
+            <!-- FOOTER -->
+            <div style="width:100%; border-top:2px solid #1a73e8; margin-top:15px; padding-top:5px; font-size:10px;">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="text-align:left;">📞 +92-300-1234567</td>
+                        <td style="text-align:center;">📧 info@school.com</td>
+                        <td style="text-align:right;">Page <span class="page"/> / <span class="topage"/></td>
+                    </tr>
+                </table>
+            </div>
+
         </t>
     </template>
-
 </odoo>
