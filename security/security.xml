@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <data noupdate="1">
 
-    <!-- Teacher Group -->
-    <record id="group_school_teacher" model="res.groups">
-        <field name="name">Teacher</field>
-    </record>
+        <record id="group_school_student" model="res.groups">
+            <field name="name">Student</field>
+        </record>
 
+        <record id="group_school_teacher" model="res.groups">
+            <field name="name">Teacher</field>
+        </record>
+
+        <record id="group_school_principal" model="res.groups">
+            <field name="name">Principal</field>
+        </record>
+
+        <record id="group_school_admin" model="res.groups">
+            <field name="name">School Administrator</field>
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_system'))]"/>-->
+        </record>
+
+    </data>
 </odoo>

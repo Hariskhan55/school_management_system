@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- Root Menu -->
     <menuitem
         id="menu_school_root"
         name="School Management"
-        sequence="10"/>
+        sequence="10"
+        groups="school_management_system.group_school_student,school_management_system.group_school_teacher,school_management_system.group_school_principal,school_management_system.group_school_admin"/>
 
-    <!-- Student Menu -->
     <menuitem
         id="menu_student"
         name="Students"
@@ -15,7 +14,6 @@
         action="action_student"
         sequence="20"/>
 
-    <!-- Teacher Menu -->
     <menuitem
         id="menu_teacher"
         name="Teachers"
@@ -23,7 +21,6 @@
         action="action_teacher"
         sequence="30"/>
 
-    <!-- Classroom Menu -->
     <menuitem
         id="menu_classroom"
         name="Classrooms"
@@ -31,12 +28,11 @@
         action="action_classroom"
         sequence="40"/>
 
-    <!-- Subject Menu -->
     <menuitem
         id="menu_subject"
         name="Subjects"
         parent="menu_school_root"
-        action="action_student"
+        action="action_subject"
         sequence="50"/>
 
 </odoo>

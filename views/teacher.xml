@@ -22,14 +22,12 @@
         <field name="arch" type="xml">
             <form string="Teacher">
 
-          <header>
-    <button name="%(school_management_system.action_teacher_pdf)d"
-            string="Print PDF"
-            type="action"
-            class="btn-primary"/>
-</header>
-
-
+                <header>
+                    <button name="%(school_management_system.action_teacher_pdf)d"
+                            string="Print PDF"
+                            type="action"
+                            class="btn-primary"/>
+                </header>
 
                 <sheet>
                     <group>
@@ -45,6 +43,15 @@
                             <field name="currency_id"/>
                         </group>
                     </group>
+
+                    <!-- 🔐 BANK DETAILS (ADMIN ONLY) -->
+                    <group string="Bank Details"
+                           groups="school_management_system.group_school_admin">
+                        <field name="bank_name"/>
+                        <field name="bank_account_no"/>
+                        <field name="bank_ifsc"/>
+                    </group>
+
                 </sheet>
 
             </form>
